@@ -93,14 +93,14 @@ window.onload = function() {
     if (Math.floor(Math.random() * 2)) {
       excuse.innerHTML = `
         <span id="who">${capitalize(generateText(_who))}</span>
-        <span id="action">${generateText(_action)}<span>
+        <span id="action">${generateText(_action)}</span>
         <span id="what">${generateText(_what)}</span>
         <span id="when">${generateText(_when)}</span>
       `;
     } else {
       excuse.innerHTML = `
         <span id="when">${capitalize(generateText(_when))}</span>
-        <span id="who">${generateText(_who)}<span>
+        <span id="who">${generateText(_who)}</span>
         <span id="action">${generateText(_action)}</span>
         <span id="what">${generateText(_what)}</span>
       `;
