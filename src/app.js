@@ -18,5 +18,29 @@ window.onload = function() {
     "while I was praying"
   ];
 
-  const excuse = document.querySelector();
+  const excuse = document.querySelector("#excuse");
+
+  // functions
+  const generateText = (_who, _action, _what, _when) => {
+    // _who, _action, _what, _when -> type array
+
+    const whoSelected = _who[Math.floor(Math.random() * _who.length)];
+    const actionSelected = _action[Math.floor(Math.random() * _action.length)];
+    const whatSelected = _what[Math.floor(Math.random() * _what.length)];
+    const whenSelected = _when[Math.floor(Math.random() * _when.length)];
+
+    // syntax
+    // 0- Who action what when.
+    // 1- When who action what.
+    // return string
+    return Math.floor(Math.random() * 2)
+      ? `${toUpperCase(
+          whoSelected
+        )} ${actionSelected} ${whatSelected} ${whenSelected}.`
+      : `${toUpperCase(
+          whenSelected
+        )} ${whoSelected} ${actionSelected} ${whatSelected}.`;
+  };
+
+  excuse.innerHTML = generateText(who, action, what, when);
 };
