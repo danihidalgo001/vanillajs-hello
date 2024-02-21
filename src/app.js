@@ -121,12 +121,15 @@ window.onload = function() {
     spanWho.innerHTML = generateText(who);
   });
   spanAction.addEventListener("click", function() {
+    console.log("action");
     spanAction.innerHTML = generateText(action);
   });
   spanWhat.addEventListener("click", function() {
+    console.log("what");
     spanWhat.innerHTML = generateText(what);
   });
   spanWhen.addEventListener("click", function() {
+    console.log("when");
     spanWhen.innerHTML = generateText(when);
   });
 
