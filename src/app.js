@@ -75,13 +75,41 @@ window.onload = function() {
   // elements
   const buttom = document.querySelector("#img-buttom");
   const excuse = document.querySelector("#excuse");
-  const spanWho = document.querySelector("#who");
-  const spanAction = document.querySelector("#action");
-  const spanWhat = document.querySelector("#what");
-  const spanWhen = document.querySelector("#when");
 
   // functions
   const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+  const addEventListener = () => {
+    const spanWho = document.querySelector("#who");
+    const spanAction = document.querySelector("#action");
+    const spanWhat = document.querySelector("#what");
+    const spanWhen = document.querySelector("#when");
+
+    spanWho.addEventListener("click", function() {
+      let capitalized = false;
+      if (Object.values(spanWho.attributes).length == 2) {
+        capitalized = true;
+      }
+      spanWho.textContent = capitalized
+        ? capitalize(generateText(who))
+        : generateText(who);
+    });
+    spanWhen.addEventListener("click", function() {
+      let capitalized = false;
+      if (Object.values(spanWhen.attributes).length == 2) {
+        capitalized = true;
+      }
+      spanWhen.textContent = capitalized
+        ? capitalize(generateText(when))
+        : generateText(when);
+    });
+    spanAction.addEventListener("click", function() {
+      spanAction.textContent = generateText(action);
+    });
+    spanWhat.addEventListener("click", function() {
+      spanWhat.textContent = generateText(what);
+    });
+  };
 
   const generateText = array => array[Math.floor(Math.random() * array.length)];
 
@@ -92,19 +120,23 @@ window.onload = function() {
     // return string
     if (Math.floor(Math.random() * 2)) {
       excuse.innerHTML = `
-        <span id="who">${capitalize(generateText(_who))}</span>
+        <span id="who" capitalized>${capitalize(generateText(_who))}</span>
         <span id="action">${generateText(_action)}</span>
         <span id="what">${generateText(_what)}</span>
         <span id="when">${generateText(_when)}</span>
+        <span>.</span>
       `;
     } else {
       excuse.innerHTML = `
-        <span id="when">${capitalize(generateText(_when))}</span>
+        <span id="when" capitalized>${capitalize(generateText(_when))}</span>
         <span id="who">${generateText(_who)}</span>
         <span id="action">${generateText(_action)}</span>
         <span id="what">${generateText(_what)}</span>
+        <span>.</span>
       `;
     }
+
+    addEventListener();
   };
 
   // listeners
@@ -115,22 +147,6 @@ window.onload = function() {
       _what: what,
       _when: when
     });
-  });
-  spanWho.addEventListener("click", function() {
-    console.log("who");
-    spanWho.innerHTML = generateText(who);
-  });
-  spanAction.addEventListener("click", function() {
-    console.log("action");
-    spanAction.innerHTML = generateText(action);
-  });
-  spanWhat.addEventListener("click", function() {
-    console.log("what");
-    spanWhat.innerHTML = generateText(what);
-  });
-  spanWhen.addEventListener("click", function() {
-    console.log("when");
-    spanWhen.innerHTML = generateText(when);
   });
 
   // on mounted
